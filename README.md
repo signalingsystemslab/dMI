@@ -15,7 +15,7 @@ Contact: Ying Tang, jamestang23@gmail.com
 
 Guideline
 
-A step-by-step guideline is on the website of the package: the website link will be generated after the manuscript is accepted.
+A step-by-step guideline is on the website of the package: https://sites.google.com/view/dmipackage. The website link may differ after the manuscript is accepted.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 
