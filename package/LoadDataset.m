@@ -23,57 +23,68 @@ MaxUniform=0;
     
 elseif OtherPara.Dataset==1
 % Load data and experiment information for dataset 1
-disp('Import data');
-fh = load('nfkb_dynamics_ade29-Jul-2019.mat');
-data = fh.dataTbl;
-expts = readtable('stimulus_info.xlsx'); 
-disp(expts)
-[IDload, txt2]= xlsread('stimulus_info.xlsx',1,'A1:A54');
+
+filename1='NFkB_WT.mat';
+if MainPara.Mutant==1
+filename1='NFkB_KO.mat';
+end
+
+if exist(filename1)
+    disp('Import data');
+    load(filename1);
+else
+    disp('Please put the data from the supplementary of the paper into the code folder');
+end
+%fh = load('nfkb_dynamics_ade29-Jul-2019.mat');
+%data = fh.dataTbl;
+%expts = readtable('stimulus_info.xlsx'); 
+%disp(expts)
+%[IDload, txt2]= xlsread('stimulus_info.xlsx',1,'A1:A54');
 
 % Choose the experimental ID of the selected conditions:
 % For our dataset, the index number for the experiment under the various conditions
 % 783 control,650 10TNF, 779 100LMW-PIC, 610 100cpG, 720 100P3CSk, 756 100LPS, 566 50PIC, 780 33PIC,
 % 778 33LMW-PIC,  546 10P3CSk, 548 1P3CSk
 %Remove conditions with <300 trajs: 147 445 446 447 450 757. After removing:
-stim_ID =[ 548 779 650 754 756 664 777 581 720 157  610 546 778 780 755 663 783]; %selected WT: very few replicate
+%stim_ID =[ 548 779 650 754 756 664 777 581 720 157  610 546 778 780 755 663 783]; %selected WT: very few replicate
 %IkBMu
-if MainPara.Mutant==1
-%stim_ID =[ 751,759,752,760,753,761];% IkBMu with replicate
-stim_ID =[ 759,760,761,783];% IkBMu without replicate
-end
+% if MainPara.Mutant==1
+% %stim_ID =[ 751,759,752,760,753,761];% IkBMu with replicate
+% stim_ID =[ 759,760,761,783];% IkBMu without replicate
+% end
 
-disp(stim_ID);
+%disp(stim_ID);
 
-index=ismember(IDload, stim_ID);
-ID_ordered=IDload(index)';
-Stimulus=expts{:,3}(index);
-Concentration=expts{:,4}(index);
-Unit=expts{:,5}(index);
+%index=ismember(IDload, stim_ID);
+%ID_ordered=IDload(index)';
+%Stimulus=expts{:,3}(index);
+%Concentration=expts{:,4}(index);
+%Unit=expts{:,5}(index);
 
-ctrl_ID = [];
+%ctrl_ID = [];
 %stim_ID = IDload';%546:548; 
-ID_ordered = [ctrl_ID, ID_ordered];
+%ID_ordered = [ctrl_ID, ID_ordered];
 [ID I]=sort(ID_ordered);
-condition=cell(1,size(Unit,1));
-for i=1:size(Unit,1)
-    str=[num2str(Concentration(i)),Unit(i),Stimulus(i)];%,num2str(ID_ordered(i))];
-    condition{i}=join(str," ");
-end
-Stimulus=Stimulus(I);
-condition=condition(I);
+% condition=cell(1,size(Unit,1));
+% for i=1:size(Unit,1)
+%     str=[num2str(Concentration(i)),Unit(i),Stimulus(i)];%,num2str(ID_ordered(i))];
+%     condition{i}=join(str," ");
+% end
+% Stimulus=Stimulus(I);
+% condition=condition(I);
 
 % Get the row names of trajectories of the selected conditions
-idx =  ismember(data.ID, ID);
+%idx =  ismember(data.ID, ID);
 
 % Specify the number of time points, where 'txt' are the time points 
-[ss, txt]= xlsread('TimeSeries.xlsx',1,'A1:A143');%A143
+%[ss, txt]= xlsread('TimeSeries.xlsx',1,'A1:A143');%A143
 
 txt2=txt;
 featureNames = txt';
 display(ID);
 
 % Construct a master dataset from the measured time series.
-X= construct_mi_mat(data(idx,:), featureNames); 
+%X= construct_mi_mat(data(idx,:), featureNames); 
 
 
 elseif OtherPara.Dataset==2
