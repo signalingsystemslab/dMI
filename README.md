@@ -7,8 +7,6 @@ This MATLAB code package implements the quantification on the dynamical mutual i
 
 A detailed example on the methods is given in the main text. 
 
-A guideline for the package is on the website: the website link will be generated after the manuscript is accepted. 
-
 Contact: Ying Tang, jamestang23@gmail.com
 
 --------------------------------------------------------------------------------------------------------------------------------------------
