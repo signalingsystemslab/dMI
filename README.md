@@ -25,12 +25,10 @@ We have used the toolbox “Hidden Markov Models (HMM)” in MATLAB.
 
 Third-party packages: 
 
- (1) We have used the package of NFkB signaling model on https://github.com/biomystery/tnf_ikbd_nfkb_model.git.
+ (1) The package to generate the data of NFkB on https://github.com/Adewunmi91/MACKtrack.
  
- (2) The package to generate the data of NFkB on https://github.com/Adewunmi91/MACKtrack.
+ (2) We thank Roy Wollman's group for sharing the code of vector method.
  
- (3) We thank Roy Wollman's group for sharing the code of vector method.
- 
- (4) The decoding-based method was not included here, because it can be separately implemented by the user-friendly package (https://github.com/swainlab/mi-by-decoding).
+ (3) The decoding-based method was not included here, because it can be separately implemented by the user-friendly package (https://github.com/swainlab/mi-by-decoding).
 
 Expected run time: all the expected run time below is evaluated based on a personal desktop with intel(R) core(tm) i7-8700 CPU @ 3.7GHz.
